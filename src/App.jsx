@@ -3,6 +3,7 @@ import Layout from './layout/Layout';
 import HomePage from './pages/HomePage/HomePage';
 import ResultsPage from './pages/ResultsPage/ResultsPage';
 import VideoPlayerPage from './pages/VideoPlayerPage/VideoPlayerPage';
+import './styles/components/shared/Global/_reset.scss';
 
 function App() {
     return (

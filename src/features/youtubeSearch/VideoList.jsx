@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import styles from '../../styles/features/youtubeSearch/VideoList.module.scss';
 
 function VideoList() {
     const videos = useSelector((state) => state.youtube.videos);
@@ -18,16 +20,22 @@ function VideoList() {
     }
 
     return (
-        <section>
+        <section className={styles.videoList}>
             <h2>Danh sách video:</h2>
-            <ul>
-                {videos.map((video) => (
-                    <li key={video.id.videoId}>
-                        <img src={video.snippet.thumbnails.medium.url} alt={video.snippet.title} width="200" />
-                        <p>{video.snippet.title}</p>
-                    </li>
-                ))}
-            </ul>
+            {videos.map((video) => (
+                <div className={styles.videoListItem}>
+                    <div className={styles.card}>
+                        <Link to={`/results/video/${video.id.videoId}`}>
+                            <img src={video.snippet.thumbnails.medium.url} alt={video.snippet.title} />
+                        </Link>
+                    </div>
+                    <div className={styles.videoInfo}>
+                        <Link to={`/results/video/${video.id.videoId}`}>
+                            <h1>{video.snippet.title}</h1>
+                        </Link>
+                    </div>
+                </div>
+            ))}
         </section>
     );
 }
